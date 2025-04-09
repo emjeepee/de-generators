@@ -42,6 +42,7 @@ Unfortunately, that's too easy. Use a generator.
 """
 
 # 1 1 2 3 5 8 13
+
 # if i = 3 counter_a = 1 counter_b = 1 counter_c = 0
 # yield counter_a + counter_b
 
@@ -54,22 +55,31 @@ Unfortunately, that's too easy. Use a generator.
 # if i = 5 counter_a = 2 counter_b = 3 
 # yield counter_a + counter_b 
 
-
+# the following function will call yield
+# n times:
 def fib(n):
-    counter_a = 1
-    counter_b = 1
-    counter_c = 0
+    a = 1
+    b = 1
+    c = 0
     for i in range(1,n + 1): 
         if i <= 2: 
-            yield counter_a 
+            yield a 
         if i > 2:
-            yield counter_a + counter_b 
+            yield a + b 
 
-            counter_c = counter_a + counter_b 
-            counter_a = counter_b 
-            counter_b = counter_c 
+            c = a + b 
+            a = b 
+            b = c 
 
     # 1    1    2    3    5    8    13
+
+
+# def fib_2(n):
+#     if n <= 2: 
+#         yield 1
+#     yield fib(n - 1) + fib(n - 2)
+
+
 
 
 

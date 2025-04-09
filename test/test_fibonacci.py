@@ -25,14 +25,47 @@ def test_fibonacci_function_returns_seven_items():
     assert next(fib_gen) == 8
     assert next(fib_gen) == 13
 
-def test_fibonacci_function_raises_Stop_Iteration_error():
+def test_function_fib_raises_first_StopIter_exception():
     fib_gen = fib(4)
+    
+    stop_iter_raised = False
+
+    expected = True
 
     for i in range(5):
-        next(fib_gen)
-        if i ==  4:
-            print(next(fib_gen()))
-            #assert next(fib_gen) == StopIteration 
+        try:
+            next(fib_gen)
+        except StopIteration:
+            print("StopIteration WAS reaised")
+            stop_iter_raised = True
+            result = stop_iter_raised
+            assert result == expected
+
+
+def test_function_fib_raises_first_StopIter_exception_second_time():
+    fib_gen = fib(3)
+    
+    # stop_iter_raised = False
+    # expected = True
+
+    for i in range(1, 6):
+        try:
+            next(fib_gen)
+        except StopIteration:
+            with pytest.raises(StopIteration):
+                next(fib_gen)
+            
+
+
+
+
+
+
+
+
+
+
+
 
     # while True:
     #     try:
